@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Từ điển</title>
+</head>
+<body>
+    <script>
+        let eng = ["tall", "short", "apple", "pineapple", "pen", "pencil"];
+        let vie = ["cao", "thấp", "quả táo", "quả dứa", "bút bi", "bút chì"];
+        let ques = prompt("Nhập từ muốn dịch");
+        let found = false;
+        
+        eng.forEach(function (value, index) {
+            if (value === ques)
+            {
+                alert(`Từ đó nghĩa là: ${vie[index]}`);
+                found = true;
+            }
+        })
+        if (!found) {
+            alert("Không tìm thấy");
+        }
+    </script>
+</body>
+</html>
