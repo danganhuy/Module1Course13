@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Tic tac toe</title>
+    <style>
+        table {
+            cursor: default;
+            border-collapse: collapse;
+            user-select: none;
+        }
+        td {
+            text-align: center;
+            width: 25px;
+            height: 25px;
+            border: 1px solid #333333;
+        }
+        td:hover {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const player1 = "x";
+        const player2 = "o";
+        const player1Color = "red";
+        const player2Color = "blue";
+        let board;
+        function DrawBoard(size) {
+            let s = `<table>`;
+            for (let i = 0; i < size; i++) {
+                s += `<tr>`;
+                for (let j = 0; j < size; j++) {
+                    s += `<td class="cell" id="${i}_${j}"></td>`;
+                }
+                s += `</tr>`;
+            }
+            s += `</table>`;
+            document.write(s);
+        }
+        function InitBoard(size) {
+            board = [];
+            for (let i = 0; i < size; i ++) {
+                board[i] = [];
+                for (let j = 0; j < size; j ++) {
+                    board[i][j] = "";
+                }
+            }
+        }
+        function AddBoardEvent() {
+            let cells = document.getElementsByClassName("cell");
+            for (const cell of cells) {
+                cell.addEventListener("click", EnterCell);
+            }
+        }
+        function CreateGame() {
+            let size = prompt("Enter board size: ");
+            DrawBoard(size);
+            InitBoard(size);
+            AddBoardEvent();
+        }
+        CreateGame();
+        
+        
+        let player1Turn = true;
+        function EnterCell(event) {
+            let target = event.target;
+            let sArr = target.id.split("_");
+            let x = +sArr[0];
+            let y = +sArr[1];
+            if (board[x][y] !== "") {
+            
+            }
+            else{
+                if (player1Turn) {
+                    board[x][y] = player1;
+                    target.innerHTML = player1;
+                    target.style.color = player1Color;
+                }
+                else {
+                    board[x][y] = player2;
+                    target.innerHTML = player2;
+                    target.style.color = player2Color;
+                }
+                CheckIfWin(x,y);
+                player1Turn = !player1Turn;
+            }
+        }
+        function CheckIfWin(x,y) {
+            let type = player1Turn? player1 : player2;
+            let col = RecursiveCheck(x+1,y,1,0,type) + RecursiveCheck(x-1,y,-1,0,type) + 1;
+            let row = RecursiveCheck(x,y+1,0,1,type) + RecursiveCheck(x,y-1,0,-1,type) + 1;
+            let leftSlash = RecursiveCheck(x+1,y+1,1,1,type) + RecursiveCheck(x-1,y-1,-1,-1,type) + 1;
+            let rightSlash = RecursiveCheck(x+1,y-1,1,-1,type) + RecursiveCheck(x-1,y+1,-1,1,type) + 1;
+            if (col >= 5 || row >= 5 || leftSlash >= 5 || rightSlash >= 5) {
+                DeclareWinner();
+            }
+            
+        }
+        function RecursiveCheck(x,y,dX,dY,type) {
+            if (board[x][y] === type) {
+                return RecursiveCheck(x+dX,y+dY,dX,dY,type) + 1;
+            }
+            else {
+                return 0;
+            }
+        }
+        function DeclareWinner() {
+            if (player1Turn) {
+                alert("Player 1 WIN");
+            }
+            else {
+                alert("Player 2 WIN");
+            }
+        }
+    </script>
+</body>
+</html>
