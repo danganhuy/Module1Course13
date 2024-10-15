@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Sử dụng các hàm có sẵn của mảng</title>
+</head>
+<body>
+    <script>
+        const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const LOWER = 'abcdefghijklmnopqrstuvwxyz';
+        
+        let inputS = `The Quick Brown Fox`;
+        let s = "";
+        
+        for (const ele of inputS) {
+            if (UPPER.indexOf(ele) !== -1)
+                s += ele.toLowerCase();
+            else if (LOWER.indexOf(ele) !== -1)
+                s += ele.toUpperCase();
+            else
+                s += ele;
+        }
+        document.write(s);
+    </script>
+</body>
+</html>
