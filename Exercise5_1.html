@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Luyện tập mảng 01</title>
+</head>
+<body>
+    <script>
+        function CreateNumbers() {
+            let arr = [];
+            for (let i = 0; i < 10; i++) {
+                arr.push(Math.floor(Math.random() * 20 + 1));
+            }
+            return arr;
+        }
+        let arr = CreateNumbers();
+        let newArr = [];
+        for (const e of arr) {
+            if (e >= 10) {
+                newArr.push(e);
+            }
+        }
+        for (const e of newArr) {
+            document.write(`${e}<br>`);
+        }
+    </script>
+</body>
+</html>

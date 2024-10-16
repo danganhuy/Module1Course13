@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Luyện tập mảng 01</title>
+</head>
+<body>
+    <script>
+        function CreateNumbers() {
+            let arr = [];
+            for (let i = 0; i < 10; i++) {
+                arr.push(Math.floor(Math.random() * 20 + 1));
+            }
+            return arr;
+        }
+        let arr = CreateNumbers();
+        let max = arr[0];
+        let index = 0;
+        let ave = 0;
+        arr.forEach(function (v,i) {
+            if (v > max) {
+                max = v;
+                index = i
+            }
+            ave += v;
+        })
+        ave /= arr.length;
+        arr.forEach(function (v,i) {
+            document.write(v);
+            if (i !== arr.length-1)
+                document.write(", ");
+            else
+                document.write("<br>");
+        })
+        document.write(`Giá trị lớn nhất trong dãy là ${max} ở vị trí ${index} <br>`);
+        document.write(`Trung bình của dãy là ${ave}`);
+    </script>
+</body>
+</html>

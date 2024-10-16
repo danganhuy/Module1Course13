@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Luyện tập mảng 01</title>
+</head>
+<body>
+    <script>
+        function CreateNumbers() {
+            let arr = [];
+            for (let i = 0; i < 10; i++) {
+                arr.push(Math.floor(Math.random() * 10 + 1));
+            }
+            return arr;
+        }
+        let arr = CreateNumbers();
+        let num = parseInt(prompt("Nhập một số nguyên dương"));
+        for (let i = 0; i < arr.length; i++) {
+            if (num === arr[i]) {
+                for (let j = i+1; j < arr.length; j++) {
+                    arr[j-1] = arr[j];
+                }
+                arr.length--;
+                arr.push(0);
+            }
+        }
+        document.write(`Dãy số: ${arr}`);
+    </script>
+</body>
+</html>

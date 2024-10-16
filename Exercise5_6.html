@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Luyện tập mảng 01</title>
+</head>
+<body>
+    <script>
+        function CreateNumbers() {
+            let arr = [];
+            for (let i = 0; i < 10; i++) {
+                arr.push(Math.floor(Math.random() * 10 + 1));
+            }
+            return arr;
+        }
+        let arr = CreateNumbers();
+        let num = parseInt(prompt("Nhập một số nguyên dương"));
+        for (let i = 0; i < arr.length; i++) {
+            if (num === arr[i]) {
+                alert(`${num} có nằm trong mảng`)
+                break;
+            }
+            if (i === arr.length - 1) {
+                alert(`${num} không nằm trong mảng`)
+            }
+        }
+        let s1 = "";
+        for (let i = 0; i < arr.length; i++) {
+            s1 += arr[i];
+            s1 += i !== arr.length-1 ? `, ` : `<br>`
+        }
+        document.write(`Dãy số: ${s1}`);
+    </script>
+</body>
+</html>
