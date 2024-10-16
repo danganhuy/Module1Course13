@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Luyện tập mảng 01</title>
+</head>
+<body>
+    <script>
+        function CreateNumbers() {
+            let arr = [];
+            for (let i = 0; i < 100; i++) {
+                arr.push(Math.floor(Math.random() * 79 + 48));
+            }
+            return arr;
+        }
+        let arr = CreateNumbers();
+        let arrS = [];
+        for (let i = 0; i < arr.length; i++) {
+            arrS.push(String.fromCharCode(arr[i]));
+        }
+        let count = 0;
+        for (let i = 0; i < arrS.length; i++) {
+            if (parseInt(arrS[i]) >= 0 || parseInt(arrS[i]) <= 9) {
+                count ++;
+            }
+        }
+        document.write(arrS);
+        document.write(`<br><br>Số ký tự số trong mảng: ${count}`);
+        
+    </script>
+</body>
+</html>

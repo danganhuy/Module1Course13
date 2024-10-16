@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Luyện tập mảng 01</title>
+</head>
+<body>
+    <script>
+        function CreateNumbers() {
+            let arr = [];
+            for (let i = 0; i < 100; i++) {
+                arr.push(Math.floor(Math.random() * 79 + 48));
+            }
+            return arr;
+        }
+        const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let arr = CreateNumbers();
+        let arrS = [];
+        for (let i = 0; i < arr.length; i++) {
+            arrS.push(String.fromCharCode(arr[i]));
+        }
+        let count = 0;
+        for (let i = 0; i < arrS.length; i++) {
+            if (alphabet.indexOf(arrS[i]) !== -1) {
+                count ++;
+            }
+        }
+        document.write(arrS);
+        document.write(`<br><br>Số chữ cái trong mảng: ${count}`);
+        
+    </script>
+</body>
+</html>
